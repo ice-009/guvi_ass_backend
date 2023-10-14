@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose= require('mongoose');
+const cors = require('cors')
 const morgan = require('morgan')
 const app = express();
+app.use(cors());
 const authRoute = require('./routes/auth')
 const {verifyAccessToken} = require('./helpers/jwt_helper')
 require('dotenv').config()
@@ -49,7 +51,7 @@ app.use((err,req,res,next)=>{
 })
 
 
-const port = 3000;
+const port = 3001;
 app.listen(port, () => {
   console.log(`Server is listening at port ${port}`);
 });
